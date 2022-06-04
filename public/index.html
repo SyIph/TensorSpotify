@@ -2,36 +2,277 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <link rel="icon" href="images/icon.png" />
+    <link rel="stylesheet" href="../src/index.css">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
       name="description"
       content="Web site created using create-react-app"
     />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
-
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
+    <title>Spotify - Единственная страница :)</title>
   </head>
   <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+    <div id="root" class="main">
+      <!--Меню с конпками и списком плейлистов-->
+      <div class="menu_block">
+        <div class="menu_sub_block"> 
+          <div class="menu_choices_block"> 
+            <a id="logo" href=""> <img src="images/logo.png" width="131"/> </a>
+            <a class="text_deco3" href="" id="main_btn">Главная</a>
+            <a class="text_deco3" style="cursor: pointer;" id="menu_serch_open">Поиск</a>
+            <a class="text_deco3" style="cursor: pointer;" id="create_playlist">Создать плейлист</a>
+          </div>
+          <!--Список плейлистов-->
+          <div style="overflow-y: overlay;"> 
+            <div class="playlists_block" id="playlists_list"> 
+              <a class="text_deco3" style="cursor: pointer; color: white;">Мой плейлист №2</a>
+              <a class="text_deco3" style="cursor: pointer;">Мой плейлист №1</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--Сам плейлист-->
+      <div class="content_block" id="content_block"> 
+        <!--Раздел с информацией о листе-->
+        <div class="info_block">
+          <div class="info_sub_block_playlist" id="info_sub_block_playlist">
+            <div style="display: grid; padding: 0px 0px 24px 32px;">
+              <a style="cursor: pointer;"> <img class="set_playlist_icon" style="width: 232px; height: 232px;" src="images/test_music.png" id="playlist_image"/> </a>
+            </div>
+            <div>
+              <p style="display: grid; padding: 0px 0px 12px 24px;">
+                ПЛЕЙЛИСТ
+              </p>
+              <p class="pl_name">
+                <a class="text_deco2" style="cursor: pointer;" id="playlist_name">Мой плейлист №2</a>
+              </p>
+              <p class="pl_owner">
+                <a class="text_deco" style="color: white; cursor: pointer;" id="playlist_owner">SylphNox</a>
+              </p>
+            </div>
+          </div>
+          <div class="info_sub_block_error" id="info_sub_block_error">
+            <div style="width: auto; height: auto;">
+              <p>Ваш список плейлистов пуст :(</p>
+              <p>Создайте плейлист и добавьте в него музыку через поиск.</p>
+            </div>
+          </div>
+        </div>
+        <!--Раздел листа со списком музыки-->
+        <div class="music_block" id="music_block">  
+          <!--Кнопки для работы с плейлистом-->
+          <div class="play_btn_block">
+            <input type="image" class="play_btn" id="play_playlist"/>
+            <canvas id="hiddenCanvas" style="display:none;"></canvas>
+            <div style="text-align: end;">
+              <a class="text_deco3" id="delete_playlist_btn" style="cursor: pointer;">Удалить плейлист</a>
+            </div>
+          </div>
+          <!--Заголовки списка с музыкой-->
+          <div class="music_headers_block">
+            <div class="music_headers_name">
+              <p style="padding: 0px 34px 0px 38px;">#</p>
+              <p>НАЗВАНИЕ</p>
+            </div>
+            <p>АЛЬБОМ</p>
+            <p id="music_headers_date">ДАТА ДОБАВЛЕНИЯ</p>
+            <img src="images/time.png" width="16px"/>
+          </div>
+          <!--Список с музыкой-->
+          <div style="display: grid; padding-top: 18px;" id="music_list">
+            <div class="music_list_element">
+              <div class="music_name_col">
+                <label style="padding: 20px;  justify-self: center;">1</label>
+                <img src="images/test_music.png" width="40px" height="40px"/>
+                <div style="padding-left: 20px;">
+                  <p style="color: #1ece5d; font-size: 16px;">Проклятье бесконечных лет</p>
+                  <p class="text_deco">Эпидемия</p>
+                </div>
+              </div>
+              <div class="text_deco" style="display: grid; align-items: center;">Легенда Ксентарона</div>
+              <div class="music_date_col">2022-05-19 11:35:35</div>
+              <div class="music_time_col">
+                <p>4:13</p>
+                <a class="text_deco3" style="cursor: pointer">X</a>
+              </div>
+            </div>
+            <div class="music_list_element">
+              <div class="music_name_col">
+                <label style="padding: 20px;  justify-self: center;">2</label>
+                <img src="images/test_music.png" width="40px" height="40px"/>
+                <div style="padding-left: 20px; max-width: 95%; overflow: hidden;">
+                  <p style="color: white; font-size: 16px; white-space: nowrap;">Стрела судьбы</p>
+                  <p class="text_deco">Эпидемия</p>
+                </div>
+              </div>
+              <div class="text_deco" style="display: grid; align-items: center;">Легенда Ксентарона</div>
+              <div class="music_date_col">2022-05-19 11:37:12</div>
+              <div class="music_time_col">
+                <p>4:59</p>
+                <a class="text_deco3" style="cursor: pointer">X</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+      <!--Музыкальный плеер-->
+      <div class="player_block"> 
+        <div class="player_m_info_block" id="player_info"> 
+          <img src="images/test_music.png" class="img_shadow" width="56px" height="56px" id="player_music_image"/>
+          <div style="padding-left: 20px;">
+            <p style="color: white; font-size: 14px;" id="player_music_name">Проклятье бесконечных лет</p>
+            <p class="text_deco" style="font-size: 12px;" id="player_music_group">Эпидемия</p>
+          </div>
+        </div>
+        <div class="player_control"> 
+          <div class="player_control_row_1">
+            <img class="shuffle_btn" width="16px" height="16px" id="shuffle_btn"/>
+            <img class="player_btn" width="16px" height="16px" style="--player_img_1: url(../public/images/prev_1.png); --player_img_2: url(../public/images/prev_2.png);" id="prev_btn" />
+            <img class="play_btn_2" id="play_btn"/>
+            <img class="player_btn" width="16px" height="16px" style="--player_img_1: url(../public/images/next_1.png); --player_img_2: url(../public/images/next_2.png);" id="next_btn"/>
+            <img class="loop_btn" width="16px" height="16px" id="repeat_btn"/>
+          </div>
+          <div class="player_control_row_2">
+            <label style="font-size: 11px;" id="player_music_time_now">1:23</label>
+            <input type="range" min="0" max="253000" step="1" value="83000" class="volume_range" style="width: 100%;" id="music_time">
+            <label style="font-size: 11px;" id="player_music_time_full">4:13</label>
+          </div>
+        </div> 
+        <p class="player_volume_block">
+          <img class="player_btn" width="16px" height="16px" id="volume_btn"/>
+          <input type="range" min="0" max="100" step="1" value="100" class="volume_range" id="volume"> 
+        </p>
+      </div>
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+      <!--Все что отображается поверх страницы и не имеет затенения фона-->
+      <div class="info_overlay">
+        <!--Данные о профиле-->
+        <div class="account_main" id="info_bar"> 
+          <img src="images/user_test_image.png" style="width: 28px; border-radius: 50%;" id="user_image"/>
+          <label style="cursor: pointer;" id="user_display_name">SylphNox</label>
+          <label id="info_bar_tr" style="cursor: pointer;">▼</label>
+        </div>
+        <!--Меню с кнопкой выхода из аккаунта-->
+        <div class="account_main_menu" id="info_bar_menu">
+          <a class="text_deco3" id="logout_btn">Выйти</a>
+        </div>
+      </div>
+
+      <!--Меню поиска-->
+      <div class="overlay_sub_menu" style="width: fit-content; height: fit-content; padding: 20px;" id="search_menu">
+        <p style="display: grid; justify-items: end; cursor: pointer;" id="search_close"><a class="text_deco3">X</a> </p>
+        <p>Поиск музыки</p>
+        <p>
+          <input class="textbox" size="80" id="search_input">
+          <button class="save_btn" id="search_btn">Найти</button></p>
+        </p>
+        <div>
+          <div class="search_list_headers">
+            <div class="music_headers_name">
+              <p style="padding: 0px 34px 0px 38px;">#</p>
+              <p>НАЗВАНИЕ</p>
+            </div>
+            <img src="./images/time.png" width="16px"/>
+          </div>
+          <div class="search_block" id="search_list">
+  
+          </div>
+        </div>
+      </div>
+
+      <!--Все что отображается поверх страницы и имеет затенение фона-->
+      <div class="overlay_shadow_menu" id="dark_background">
+        <!--Меню входа в аккаунт-->
+        <div class="overlay_sub_menu" style="width: 300px; height: 200px;" id="login_menu">
+          Вход в аккаунт
+          <p><a class="save_btn" style="color: black; cursor: pointer;" id="enterIn">Использовать аккаунт Spotify</a> </p>
+        </div>
+        <!--Меню настройки плейлиста-->
+        <div class="overlay_sub_menu" style="width: 400px; height: 450px;" id ="edit_playlist">
+          Изменить сведения
+          <label for="file-input"> <img src="./images/music1.png" class="set_playlist_icon" style="width: 180px; height: 180px; cursor: pointer;" id="edit_playlist_image"/> </label>
+          <input type="file" accept=".jpeg,.jpg,.png" style="display: none;" id="file-input">
+          <div>
+            <p style="color: #a8aaab;">Название</p>
+            <input class="textbox" maxlength="25" size="20" id="edit_playlist_name">
+          </div>
+          <button class="save_btn" id="edit_save">Сохранить</button>
+          <label style="font-size: 10px; width: 330px;">
+            Продолжая, ты предоставляешь Spotify доступ к выбранному изображению. Пожалуйста, не загружай файлы, которые ты не имеешь права распространять.
+          </label>
+        </div>
+        <!--Меню подтверждения удаления плейлиста-->
+        <div class="overlay_sub_menu" style="width: fit-content; height: fit-content; padding: 20px;" id="confirm_menu">
+          <p>Удалить плейлист «Мой плейлист № 1»?</p>
+          <p style="font-size: 10px;">Это действие невозможно отменить.</p>
+          <p><button class="save_btn" style="background: transparent;" id="cancel_btn">Отмена</button>
+          <button class="save_btn" id="delete_playlist">Удалить</button></p>
+        </div>
+      </div>
+
+      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+      <!--Подключение файла-->
+      <script>
+        $('#info_sub_block_error').hide();
+        $('#search_menu').hide();
+        $('#dark_background').hide();
+        $('#info_bar_menu').hide();
+        var volume_bar = document.getElementById('volume');
+        var volume_btn = document.getElementById('volume_btn');
+        function handleInputChange2(e) {
+            var min = volume_bar.min
+            var max = volume_bar.max
+            var val = volume_bar.value
+            volume_bar.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%'
+            if (val == 0) {
+                volume_btn.style.content = "url(./images/volume_3.png)";
+            } else {
+                volume_btn.style.content = "";
+            }
+        }
+        function volumeHoverOn(event){
+            if (volume_bar.value == 0) {
+                volume_bar.style.setProperty("--volume_size", "");
+            }
+        }
+        function volumeHoverOff(event){
+            if (volume_bar.value == 0) {
+                volume_bar.style.setProperty("--volume_size", "0px");
+            }
+        }
+        volume_bar.addEventListener('input', handleInputChange2);
+        volume_bar.addEventListener('mouseover', volumeHoverOn);
+        volume_bar.addEventListener('mouseout', volumeHoverOff);
+
+        var music_time = document.getElementById('music_time');
+
+        function handleInputChange(e) {
+            var min = music_time.min
+            var max = music_time.max
+            var val = music_time.value
+            music_time.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%'
+        }
+        function musicHoverOn(event){
+            if (music_time.value == 0) {
+                music_time.style.setProperty("--volume_size", "");
+            }
+        }
+        function musicHoverOff(event){
+            if (music_time.value == 0) {
+                music_time.style.setProperty("--volume_size", "0px");
+            }
+        }
+        music_time.addEventListener('input', handleInputChange);
+        music_time.addEventListener('mouseover', musicHoverOn);
+        music_time.addEventListener('mouseout', musicHoverOff);
+
+        var min = music_time.min
+        var max = music_time.max
+        var val = music_time.value
+        music_time.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%'
+      </script>
+    </div>
   </body>
 </html>
